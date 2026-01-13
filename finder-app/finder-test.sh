@@ -74,6 +74,8 @@ echo "OUTPUTSTRING: $OUTPUTSTRING"
 # remove temporary directories
 rm -rf /tmp/aeld-data
  
+echo "Final result" > /tmp/assignment4-result.txt
+
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
 if [ $? -eq 0 ]; then
@@ -85,4 +87,3 @@ else
 fi
  
 # Al final del script
-echo "Final result" > /tmp/assignment4-result.txt
