@@ -67,6 +67,9 @@ do
 done
  
 
+echo "Checking if all files contain the string ${WRITESTR}"
+echo "Write directory is $WRITEDIR/${username}$i.txt" 
+
 OUTPUTSTRING=$(/usr/bin/finder.sh "$WRITEDIR" "$WRITESTR")
 
 # Guardar el resultado en /tmp/assignment4-result.txt para Assignment 4
