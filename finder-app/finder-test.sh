@@ -69,12 +69,16 @@ done
 
 OUTPUTSTRING=$(/usr/bin/finder.sh "$WRITEDIR" "$WRITESTR")
 
+# Guardar el resultado en /tmp/assignment4-result.txt para Assignment 4
+echo "${OUTPUTSTRING}" > /tmp/assignment4-result.txt
+
 echo "OUTPUTSTRING: $OUTPUTSTRING"
+
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
  
-echo "Final result" > /tmp/assignment4-result.txt
+
 
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
