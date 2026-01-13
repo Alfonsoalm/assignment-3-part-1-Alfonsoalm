@@ -51,10 +51,19 @@ fi
 #echo "Removing the old writer utility and compiling as a native application"
 #make clean
 #make
- 
+
+# write files using the writer utility
+echo "Writing files"
+# The WRITEDIR is in quotes because if the directory path consists of spaces, then variable substitution will consider it as multiple argument.
+
 for i in $( seq 1 $NUMFILES)
 do
-	/usr/bin/writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+    echo "Writing file $i"
+    # write file using the writer utility
+    # The writer utility writes the string to a file named with the username and the file number.
+    echo "$WRITEDIR/${username}$i.txt"
+    echo "$WRITESTR"
+	/usr/bin/writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
 done
  
 
