@@ -7,7 +7,7 @@ set -u
  
 NUMFILES=10
 WRITESTR=AELD_IS_FUN
-WRITEDIR=/tmp/aeld-data
+WRITEDIR=/etc/finder-app/conf
 username=$(cat /etc/finder-app/conf/username.txt)
  
 if [ $# -lt 3 ]
@@ -22,7 +22,7 @@ then
 else
 	NUMFILES=$1
 	WRITESTR=$2
-	WRITEDIR=/tmp/aeld-data/$3
+	WRITEDIR=/etc/finder-app/conf/$3
 fi
  
 MATCHSTR="The number of files are ${NUMFILES} and the number of matching lines are ${NUMFILES}"
@@ -63,12 +63,10 @@ do
     # The writer utility writes the string to a file named with the username and the file number.
     echo "$WRITEDIR/${username}$i.txt"
     echo "$WRITESTR"
-	/usr/bin/writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	/usr/bin/writer.sh "$WRITEDIR/username.txt" "$WRITESTR"
 done
- 
 
 echo "Checking if all files contain the string ${WRITESTR}"
-echo "Write directory is $WRITEDIR/${username}$i.txt" 
 
 OUTPUTSTRING=$(/usr/bin/finder.sh "$WRITEDIR" "$WRITESTR")
 
@@ -81,8 +79,6 @@ echo "OUTPUTSTRING: $OUTPUTSTRING"
 # remove temporary directories
 rm -rf /tmp/aeld-data
  
-
-
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
 if [ $? -eq 0 ]; then
