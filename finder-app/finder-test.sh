@@ -75,9 +75,6 @@ echo "${OUTPUTSTRING}" > /tmp/assignment4-result.txt
 
 echo "OUTPUTSTRING: $OUTPUTSTRING"
 
-
-# remove temporary directories
-rm -rf /tmp/aeld-data
  
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
